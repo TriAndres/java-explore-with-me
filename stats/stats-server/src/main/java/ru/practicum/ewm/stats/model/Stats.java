@@ -1,6 +1,10 @@
-package ru.practicum.statsserver.stats.model;
+package ru.practicum.ewm.stats.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,20 +12,18 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "stats")
-@Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EndpointHit {
+@Builder
+@Data
+@Entity
+@Table(name = "stats")
+public class Stats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String app;
     private String uri;
     private String ip;
     private LocalDateTime timestamp;
 }
-
-
