@@ -34,7 +34,7 @@ public class StatsController {
                                    @RequestParam(required = false, value = "uris") List<String> uris,
                                    @RequestParam(required = false, value = "unique") Boolean unique) {
         if (start != null && end != null && end.isBefore(start)) {
-            throw new ValidationException();
+            throw new ValidationException("RangeEnd is before RangeStart");
         }
         return statsService.getStats(start, end, uris, unique);
     }

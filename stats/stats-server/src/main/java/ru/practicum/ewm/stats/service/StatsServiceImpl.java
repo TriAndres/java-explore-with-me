@@ -9,7 +9,6 @@ import ru.practicum.ewm.stats.mapper.StatsMapper;
 import ru.practicum.ewm.stats.repository.StatsRepository;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
 @Service

@@ -1,4 +1,7 @@
 package ru.practicum.ewm.exception.error;
 
-public class ValidationException extends RuntimeException{
+public class ValidationException extends RuntimeException {
+    public ValidationException(String message) {
+        super(message);
+    }
 }
