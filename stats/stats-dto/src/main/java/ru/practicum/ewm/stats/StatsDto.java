@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class StatsDTO {
+public class StatsDto {
     private String app;
     private String uri;
     private Long hits;
