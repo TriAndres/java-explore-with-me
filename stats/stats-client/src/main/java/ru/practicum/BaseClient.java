@@ -1,4 +1,4 @@
-package ru.practicum.ewm;
+package ru.practicum;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
