@@ -25,7 +25,7 @@ public class StatsServiceImpl implements StatsService {
     }
 
     @Override
-    public Collection<StatsDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
+    public List<StatsDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
         if (unique != null && unique.equals(true)) {
             if (uris == null){
                 return statsRepository.findAllByTimestampBetweenAndUniqueIp(start, end);
