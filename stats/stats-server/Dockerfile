@@ -1,4 +1,3 @@
-FROM amazoncorretto:21-alpine
-LABEL authors="Андрей"
+FROM amazoncorretto:21-alpine-jdk
 COPY target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
