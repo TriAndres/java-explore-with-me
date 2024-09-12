@@ -1,6 +1,6 @@
 services:
   stats-server:
-    build: ./stats/stats-client
+    build: stats/stats-client
     container_name: stat-server
     ports:
       - "9090:9090"
