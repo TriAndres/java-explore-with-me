@@ -1,4 +1,4 @@
-package ru.practicum.exseption;
+package ru.practicum.exCeption;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
