@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UpdateEventAdminRequest  extends UpdateEventRequest {
+public class UpdateEventAdminRequest extends UpdateEventRequest {
 
     private StateAction stateAction;
 

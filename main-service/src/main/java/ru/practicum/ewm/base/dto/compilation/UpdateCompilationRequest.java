@@ -1,20 +1,20 @@
 package ru.practicum.ewm.base.dto.compilation;
 
+import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 import ru.practicum.ewm.base.util.notBlankNull.NotBlankNull;
 
 import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class UpdateCompilationRequest {
-
     private Set<Long> events;
     private Boolean pinned;
     @NotBlankNull
-    @Length(min = 1, max = 50)
+    @Size(max = 128)
     private String title;
 }
