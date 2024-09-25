@@ -7,8 +7,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import ru.practicum.ewm.base.dto.location.LocationDto;
-
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor

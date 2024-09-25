@@ -13,8 +13,8 @@ import ru.practicum.ewm.base.exception.handler.ConflictException;
 import ru.practicum.ewm.base.mapper.UserMapper;
 import ru.practicum.ewm.base.model.User;
 import ru.practicum.ewm.base.util.page.MyPageRequest;
-
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j

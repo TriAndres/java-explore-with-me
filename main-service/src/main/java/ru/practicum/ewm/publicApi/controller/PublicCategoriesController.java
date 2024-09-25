@@ -1,22 +1,18 @@
 package ru.practicum.ewm.publicApi.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.practicum.ewm.base.dto.category.CategoryDto;
-import ru.practicum.ewm.base.dto.event.*;
-import ru.practicum.ewm.base.dto.request.ParticipationRequestDto;
-import ru.practicum.ewm.base.enams.Status;
-import ru.practicum.ewm.base.exception.handler.ConflictException;
-import ru.practicum.ewm.privateApi.service.PrivateEventsService;
 import ru.practicum.ewm.publicApi.service.PublicCategoriesService;
 
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import ru.practicum.ewm.base.dto.category.CategoryDto;
 import ru.practicum.ewm.base.dto.user.UserShortDto;
-
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
