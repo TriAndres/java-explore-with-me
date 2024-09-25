@@ -9,9 +9,9 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "ru.practicum")
-public class MainServiceApplication {
+public class MainServiceApp {
     public static void main(String[] args) {
-        SpringApplication.run(MainServiceApplication.class, args);
+        SpringApplication.run(MainServiceApp.class, args);
     }
 
     @Bean

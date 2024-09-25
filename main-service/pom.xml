@@ -77,7 +77,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>ru.practicum.ewm.MainServiceApp</mainClass>
+                    <mainClass>ru.practicum.main.MainServiceApp</mainClass>
                     <layout>JAR</layout>
                 </configuration>
                 <executions>
