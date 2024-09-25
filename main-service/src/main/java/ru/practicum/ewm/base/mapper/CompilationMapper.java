@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public final class CompilationMapper {
     public static Compilation toEntity(NewCompilationDto dto) {
         return Compilation.builder()
-                .pinned(dto.getPinned())
+                .pinned(dto.isPinned())
                 .title(dto.getTitle())
                 .build();
     }

@@ -5,11 +5,11 @@ import ru.practicum.ewm.base.dto.event.EventShortDto;
 
 import java.util.Set;
 
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class CompilationDto {
 
     private Set<EventShortDto> events;
