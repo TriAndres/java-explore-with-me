@@ -13,13 +13,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public interface EventRepository extends JpaRepository<Event, Long>, EventCriteriaRepository {
+public interface EventRepository extends JpaRepository<Event, Long>,EventCriteriaRepository  {
 
-    boolean exitsByCategory(Category category);
+
+    boolean existsByCategory(Category category);
+
 
     Optional<Event> findByIdAndInitiatorId(Long id, Long userId);
 
     Set<Event> findAllByIdIn(Set<Long> ids);
+
 
     @Query("SELECT e FROM Event e " +
             "WHERE e.initiator.id IN (:users) " +
@@ -35,4 +38,5 @@ public interface EventRepository extends JpaRepository<Event, Long>, EventCriter
             Pageable pageable);
 
     boolean existsByIdAndInitiatorId(Long id, Long userId);
+
 }
