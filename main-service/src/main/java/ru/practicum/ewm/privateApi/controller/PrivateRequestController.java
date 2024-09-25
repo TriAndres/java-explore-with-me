@@ -38,6 +38,4 @@ public class PrivateRequestController {
                 " c отменой запроса id = {}", userId, requestsId);
         return new ResponseEntity<>(service.update(userId, requestsId), HttpStatus.OK);
     }
-
-
 }
