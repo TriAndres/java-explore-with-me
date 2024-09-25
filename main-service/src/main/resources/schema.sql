@@ -117,7 +117,3 @@ CREATE TABLE IF NOT EXISTS comments
     CONSTRAINT fk_comment_to_users
         FOREIGN KEY (user_id) REFERENCES users (id)
 );
-
-
-
-
