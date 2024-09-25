@@ -10,7 +10,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <name>Stats Server</name>
+    <name>stats-server</name>
     <artifactId>stats-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
