@@ -1,65 +1,61 @@
 package ru.practicum;
 
-import jakarta.annotation.Nullable;
-import lombok.RequiredArgsConstructor;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Map;
 
-
-@RequiredArgsConstructor
 public class BaseClient {
-    protected final RestTemplate restTemplate;
+    protected final RestTemplate rest;
 
-    protected ResponseEntity<Object> get(String uri, @Nullable Map<String, Object> parameters) {
-        return sendRequest(uri, HttpMethod.GET, null, parameters);
+    public BaseClient(RestTemplate rest) {
+        this.rest = rest;
     }
 
-    protected <F> ResponseEntity<F> getList(String uri, @Nullable Map<String, Object> parameters,
-                                             ParameterizedTypeReference<F> type) {
-        return sendRequestForList(uri, HttpMethod.GET, null, parameters, type);
+    protected ResponseEntity<Object> get(String path, @Nullable Map<String, Object> parameters) {
+        return makeAndSendRequest(HttpMethod.GET, path, parameters, null);
     }
 
-    protected <T> ResponseEntity<Object> post(String uri, @Nullable T body,
-                                              @Nullable Map<String, Object> parameters) {
-        return sendRequest(uri, HttpMethod.POST, body, parameters);
+    protected <T> ResponseEntity<Object> post(String path, T body) {
+        return post(path, null, body);
     }
 
-    private <T, F> ResponseEntity<F> sendRequestForList(String uri, HttpMethod method,
-                                                          @Nullable T body,
-                                                          @Nullable Map<String, Object> parameters,
-                                                            ParameterizedTypeReference<F> type) {
+    protected <T> ResponseEntity<Object> post(String path, @Nullable Map<String, Object> parameters, T body) {
+        return makeAndSendRequest(HttpMethod.POST, path, parameters, body);
+    }
 
-        HttpEntity<T> request = new HttpEntity<>(body, defaultHeaders());
+    private <T> ResponseEntity<Object> makeAndSendRequest(HttpMethod method, String path, @Nullable Map<String, Object> parameters, @Nullable T body) {
+        HttpEntity<T> requestEntity = new HttpEntity<>(body, defaultHeaders());
 
-        ResponseEntity<F> response;
-
-        if (parameters == null) {
-            response = restTemplate.exchange(uri, method, request, type);
-        } else {
-            response = restTemplate.exchange(uri, method, request, type, parameters);
+        ResponseEntity<Object> statsServerResponse;
+        try {
+            if (parameters != null) {
+                statsServerResponse = rest.exchange(path, method, requestEntity, Object.class, parameters);
+            } else {
+                statsServerResponse = rest.exchange(path, method, requestEntity, Object.class);
+            }
+        } catch (HttpStatusCodeException e) {
+            return ResponseEntity.status(e.getStatusCode()).body(e.getResponseBodyAsByteArray());
         }
-        return response;
+        return prepareGatewayResponse(statsServerResponse);
     }
 
-
-    private <T> ResponseEntity<Object> sendRequest(String uri, HttpMethod method,
-                                                   @Nullable T body,
-                                                   @Nullable Map<String, Object> parameters) {
-
-        HttpEntity<T> request = new HttpEntity<>(body, defaultHeaders());
-
-        ResponseEntity<Object> response;
-
-        if (parameters == null) {
-            response = restTemplate.exchange(uri, method, request, Object.class);
-        } else {
-            response = restTemplate.exchange(uri, method, request, Object.class, parameters);
+    private static ResponseEntity<Object> prepareGatewayResponse(ResponseEntity<Object> response) {
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response;
         }
-        return response;
+        ResponseEntity.BodyBuilder responseBuilder = ResponseEntity.status(response.getStatusCode());
+        if (response.hasBody()) {
+            return responseBuilder.body(response.getBody());
+        }
+        return responseBuilder.build();
     }
 
     private HttpHeaders defaultHeaders() {
