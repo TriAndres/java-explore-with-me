@@ -11,10 +11,10 @@
 	</parent>
 
 	<name>Explore With Me</name>
-	<modules>
-		<module>stats</module>
-		<module>main-service</module>
-	</modules>
+<!--	<modules>-->
+<!--		<module>stats</module>-->
+<!--		<module>main-service</module>-->
+<!--	</modules>-->
 
 	<groupId>ru.practicum</groupId>
 	<artifactId>explore-with-me</artifactId>
@@ -23,6 +23,8 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
