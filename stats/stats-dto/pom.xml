@@ -9,9 +9,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <name>Stats DTO</name>
+<!--    <name>Stats DTO</name>-->
     <artifactId>stats-dto</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+<!--    <version>0.0.1-SNAPSHOT</version>-->
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

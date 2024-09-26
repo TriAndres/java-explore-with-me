@@ -9,9 +9,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <name>Stats Client</name>
+<!--    <name>Stats Client</name>-->
     <artifactId>stats-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+<!--    <version>0.0.1-SNAPSHOT</version>-->
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
