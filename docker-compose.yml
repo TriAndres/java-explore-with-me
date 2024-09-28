@@ -2,51 +2,53 @@
 services:
   ewm-service:
     build: main-service
-    container_name: ewm-service-container
+    container_name: ewm-service
     ports:
       - "8080:8080"
     depends_on:
       - ewm-db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/ewm-db
-      - SPRING_DATASOURCE_USERNAME=ewm
-      - SPRING_DATASOURCE_PASSWORD=ewm
-      - stats-service.url=http://stats-server:9090
-
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
 
   ewm-db:
     image: postgres:16.1
-    container_name: ewm-db-container
-    volumes:
-      - /var/lib/postgresql/data/
+    container_name: ewm-db
     ports:
       - "6542:5432"
     environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
       - POSTGRES_DB=ewm-db
-      - POSTGRES_USER=ewm
-      - POSTGRES_PASSWORD=ewm
+    healthcheck:
+      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
+      timeout: 10s
+      interval: 5s
   #---------------------------------------------------------
   stats-server:
     build: stats/stats-server
-    container_name: stats-server-container
+    container_name: stats-server
     ports:
       - "9090:9090"
     depends_on:
       - stats-db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats-db
-      - SPRING_DATASOURCE_USERNAME=stats
-      - SPRING_DATASOURCE_PASSWORD=stats
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
 
 
   stats-db:
     image: postgres:16.1
-    container_name: stats-db-container
-    volumes:
-      - /var/lib/postgresql/data/
+    container_name: stats-db
     ports:
       - "6541:5432"
     environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
       - POSTGRES_DB=stats-db
-      - POSTGRES_USER=stats
-      - POSTGRES_PASSWORD=stats
+    healthcheck:
+      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
+      timeout: 10s
+      interval: 5s
