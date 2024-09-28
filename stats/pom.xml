@@ -13,14 +13,16 @@
     <artifactId>stats</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>stats-client</module>
+        <module>stats-dto</module>
+        <module>stats-server</module>
+    </modules>
+
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <modules>
-        <module>stats-client</module>
-        <module>stats-server</module>
-        <module>stats-dto</module>
-    </modules>
 </project>
