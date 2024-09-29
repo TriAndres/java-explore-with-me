@@ -20,8 +20,8 @@ services:
     container_name: statsDb
     ports:
       - "5432:5432"
-    volumes:
-      - ./volumes/statsDb:/var/lib/postgresql/data/
+#    volumes:
+#      - ./volumes/statsDb:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=statsDb
       - POSTGRES_USER=dbuser
@@ -52,8 +52,8 @@ services:
         container_name: mainDb
         ports:
           - "5433:5432"
-        volumes:
-          - ./volumes/mainDb:/var/lib/postgresql/data/
+#        volumes:
+#          - ./volumes/mainDb:/var/lib/postgresql/data/
 
         environment:
           - POSTGRES_DB=mainDb
