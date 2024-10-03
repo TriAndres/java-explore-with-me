@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   stats-server:
-    build: ewm-stats/stats-server
+    build: ewm-statss/stats-server
     image: stats-server
     container_name: statsApp
     ports:
@@ -33,7 +33,7 @@ services:
       retries: 10
 
   main-server:
-        build: ewm-service
+        build: ewm-services
         image: ewm-service
         container_name: ewmService
         ports:
