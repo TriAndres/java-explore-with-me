@@ -1,1 +1,1 @@
-FEATURE PR: https://github.com/TriAndres/java-explore-with-me/pull/10
+#репозиторий проекта : [java-explore-with-me](https://github.com/TriAndres/java-explore-with-me)
