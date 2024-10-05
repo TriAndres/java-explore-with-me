@@ -1,2 +1,1 @@
-# java-explore-with-me
-Template repository for ExploreWithMe project.
+# репозиторий проекта : [java-explore-with-me](https://github.com/TriAndres/java-explore-with-me)
