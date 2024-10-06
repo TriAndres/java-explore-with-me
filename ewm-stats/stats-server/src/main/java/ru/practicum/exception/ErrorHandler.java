@@ -17,10 +17,4 @@ public class ErrorHandler {
     public Map<String, String> handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
         return Map.of("error", e.getMessage());
     }
-
-    @ExceptionHandler(InvalidDateRangeException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleInvalidDateRangeException(final InvalidDateRangeException e) {
-        return Map.of("error", e.getMessage());
-    }
 }
