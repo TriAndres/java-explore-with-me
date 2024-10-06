@@ -331,6 +331,70 @@
             }
           ],
           "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"annotation\": \"Musical concert: Fool In Love 2024\",\r\n    \"category\": {{categoryId1}},\r\n    \"description\": \"Concert in your area for Rock, Folk & Blues, Latin, Jazz, Funk & Soul, Pop, R&B, Hip-Hop, Electronic, and Reggae.\",\r\n    \"eventDate\": \"2024-08-28 11:00:00\",\r\n    \"location\": {\r\n        \"lat\": 34.11038,\r\n        \"lon\": -118.33707\r\n    },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Find out more about Rock, Pop, Hip-Hop, and Electronic.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "{{userId1}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update event state",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                  "});\r",
+                  "pm.test(\"Has event create response\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "pm.test(\"Test event 'id' field\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('id');\r",
+                  "    pm.expect(jsonData.id, '\"id\" must be 1').to.eql(1);\r",
+                  "});\r",
+                  "pm.test(\"Test event 'state' field\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData).to.have.property('state');\r",
+                  "    pm.expect(jsonData.state, '\"state\" must be \"PUBLISH_EVENT\"').to.eql('PUBLISHED');\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
             "method": "PATCH",
             "header": [],
             "body": {
@@ -416,6 +480,84 @@
         "body": {
           "mode": "raw",
           "raw": "{\r\n    \"eventId\": \"1\",\r\n    \"text\": \"text for comment1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/users/1/comments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "users",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add comment 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"request-time\", new Date().toISOString());\r",
+              "\r",
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([201]);\r",
+              "});\r",
+              "pm.test(\"Has comment create response\", function () {\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "pm.test(\"Test comment 'id' field\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.have.property('id');\r",
+              "    pm.expect(jsonData.id, '\"id\" must be 2').to.eql(2);\r",
+              "});\r",
+              "pm.test(\"Test comment 'text' field\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.have.property('text');\r",
+              "    pm.expect(jsonData.text, '\"text\" must be \"text for comment2\"').to.eql('text for comment2');\r",
+              "});\r",
+              "pm.test(\"Test comment 'createdOn' field\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.have.property('createdOn');\r",
+              "\r",
+              "    var createdOnTime = jsonData.createdOn.replace(\" \", \"T\") + \".000Z\";\r",
+              "    var requestSentTime = pm.environment.get(\"request-time\");\r",
+              "\r",
+              "    pm.expect(new Date(createdOnTime).toISOString().slice(0, 19)).to.eql(requestSentTime.slice(0, 19));\r",
+              "});\r",
+              "pm.test(\"Test comment 'updatedOn' field\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.have.property('updatedOn');\r",
+              "\r",
+              "    var updatedOnTime = jsonData.updatedOn.replace(\" \", \"T\") + \".000Z\";\r",
+              "    var requestSentTime = pm.environment.get(\"request-time\");\r",
+              "\r",
+              "    pm.expect(new Date(updatedOnTime).toISOString().slice(0, 19)).to.eql(requestSentTime.slice(0, 19));\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"eventId\": \"1\",\r\n    \"text\": \"text for comment2\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
