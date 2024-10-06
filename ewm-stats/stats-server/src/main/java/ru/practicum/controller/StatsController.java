@@ -23,7 +23,6 @@ public class StatsController {
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private final StatsService statsService;
 
-
     @PostMapping("/hit")
     public ResponseEntity<EndpointHitDto> saveHit(@RequestBody @Valid EndpointHitDto endpointHitDto) {
         log.info("StatisticController, saveHit, Request body app: {}, uri: {}, ip: {}, timestamp: {}",
@@ -41,9 +40,6 @@ public class StatsController {
     ) {
         log.info("Statistic Controller, getStats, parameters: start {}, end {}, uris {}, unique {}",
                 start, end, uris, unique);
-        if (start.isAfter(end)) {
-            throw new InvalidDateRangeException("Ошибка даты.");
-        }
         List<ViewStatsDto> statsList = statsService.findHitsByParams(start, end, uris, unique);
         return new ResponseEntity<>(statsList, HttpStatus.OK);
     }
