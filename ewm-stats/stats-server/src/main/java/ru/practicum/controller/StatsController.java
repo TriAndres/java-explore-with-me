@@ -27,7 +27,7 @@ public class StatsController {
         log.info("StatisticController, saveHit, Request body app: {}, uri: {}, ip: {}, timestamp: {}",
                 endpointHitDto.getApp(), endpointHitDto.getUri(), endpointHitDto.getIp(), endpointHitDto.getTimestamp());
         statsService.saveHit(endpointHitDto);
-        return new ResponseEntity<>(endpointHitDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(endpointHitDto, HttpStatus.OK);
     }
 
     @GetMapping("/stats")
