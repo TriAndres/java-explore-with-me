@@ -23,7 +23,6 @@ public class StatsController {
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private final StatsService statsService;
 
-
     @PostMapping("/hit")
     public ResponseEntity<EndpointHitDto> saveHit(@RequestBody @Valid EndpointHitDto endpointHitDto) {
         log.info("StatisticController, saveHit, Request body app: {}, uri: {}, ip: {}, timestamp: {}",
