@@ -253,126 +253,14 @@
           "response": []
         },
         {
-          "name": "Create event",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200 or 201\", function () {\r",
-                  "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
-                  "});\r",
-                  "pm.test(\"Has comment create response\", function () {\r",
-                  "    pm.response.to.be.withBody;\r",
-                  "    pm.response.to.be.json;\r",
-                  "});\r",
-                  "pm.test(\"Has comment create response\", function () {\r",
-                  "    pm.response.to.be.withBody;\r",
-                  "    pm.response.to.be.json;\r",
-                  "});\r",
-                  "pm.test(\"Test comment 'id' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('id');\r",
-                  "    pm.globals.set(\"eventId1\", jsonData.id);\r",
-                  "});\r",
-                  "pm.test(\"Test event 'title' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('title');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'annotation' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('annotation');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'category' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('category');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'name' paid\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('paid');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'eventDate' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('eventDate');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'initiator' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('initiator');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'description' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('description');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'participantLimit' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('participantLimit');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'state' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('state');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'createdOn' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('createdOn');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'location' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('location');\r",
-                  "});\r",
-                  "pm.test(\"Test event 'requestModeration' field\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    pm.expect(jsonData).to.have.property('requestModeration');\r",
-                  "});\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"annotation\": \"Musical concert: Fool In Love 2024\",\r\n    \"category\": {{categoryId1}},\r\n    \"description\": \"Concert in your area for Rock, Folk & Blues, Latin, Jazz, Funk & Soul, Pop, R&B, Hip-Hop, Electronic, and Reggae.\",\r\n    \"eventDate\": \"2024-08-28 11:00:00\",\r\n    \"location\": {\r\n        \"lat\": 34.11038,\r\n        \"lon\": -118.33707\r\n    },\r\n    \"paid\": true,\r\n    \"participantLimit\": 10,\r\n    \"requestModeration\": false,\r\n    \"title\": \"Find out more about Rock, Pop, Hip-Hop, and Electronic.\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-           "url": {
-              "raw": "http://localhost:8080/users/:userId/events",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "users",
-                ":userId",
-                "events"
-              ],
-              "variable": [
-                {
-                  "key": "userId",
-                  "value": "{{userId1}}"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "update event state",
           "event": [
             {
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test(\"Status code is 401\", function () {\r",
-                  "    pm.expect(pm.response.code).to.be.oneOf([400, 401]);\r",
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
                   "});\r",
                   "pm.test(\"Has event create response\", function () {\r",
                   "    pm.response.to.be.withBody;\r",
