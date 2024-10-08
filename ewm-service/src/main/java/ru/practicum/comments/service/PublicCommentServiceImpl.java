@@ -3,6 +3,7 @@ package ru.practicum.comments.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.comments.dto.UserCommentDto;
 import ru.practicum.comments.mapper.CommentMapper;
 import ru.practicum.comments.model.Comment;
@@ -15,6 +16,7 @@ import ru.practicum.exception.ViolationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class PublicCommentServiceImpl implements PublicCommentService {

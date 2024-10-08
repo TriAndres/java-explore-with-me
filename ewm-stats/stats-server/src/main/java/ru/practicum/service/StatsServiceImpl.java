@@ -1,5 +1,6 @@
 package ru.practicum.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.mapper.EndpointHitMapper;
@@ -11,6 +12,7 @@ import ru.practicum.repository.HitRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class StatsServiceImpl implements StatsService {

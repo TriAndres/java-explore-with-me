@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 
 import static ru.practicum.events.model.State.*;
 
+@Transactional
 @Slf4j
 @Service
 public class PrivateEventServiceImpl extends EventBase implements PrivateEventService {

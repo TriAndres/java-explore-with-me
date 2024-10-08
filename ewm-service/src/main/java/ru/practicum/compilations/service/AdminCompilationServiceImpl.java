@@ -1,6 +1,7 @@
 package ru.practicum.compilations.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.client.StatsClient;
 import ru.practicum.compilations.dto.CompilationDto;
 import ru.practicum.compilations.dto.CompilationUpdateDto;
@@ -21,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Transactional
 @Service
 public class AdminCompilationServiceImpl extends CompilationBase implements AdminCompilationService {
     private final EventRepository eventRepository;

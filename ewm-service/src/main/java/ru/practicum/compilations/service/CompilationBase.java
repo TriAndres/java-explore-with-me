@@ -2,6 +2,7 @@ package ru.practicum.compilations.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.client.StatsClient;
 import ru.practicum.events.dto.CountDto;
 import ru.practicum.events.model.Event;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 import static ru.practicum.requests.model.Status.CONFIRMED;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 class CompilationBase {
