@@ -38,10 +38,6 @@ public class PrivateEventController {
     public ResponseEntity<EventDto> addEvent(@PathVariable Long userId,
                                              @Valid @RequestBody NewEventDto dto) {
         log.info("Добавление нового события {}, пользователем с идентификатором {}", dto, userId);
-        if (dto.getEventDate() != null
-                && dto.getEventDate().isBefore(LocalDateTime.now().plusHours(1))) {
-            throw new ValidationException("Ошибка даты");
-        }
         EventDto result = privateEventService.addEvent(userId, dto);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
