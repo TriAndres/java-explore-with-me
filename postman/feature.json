@@ -253,16 +253,22 @@
           "response": []
         },
         {
-          "name": "Подготовка: User 1 добавляет событие 2",
+          "name": "Создание события",
           "event": [
             {
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test(\"An access token is returned\", () => {\r",
-                  "    pm.response.to.be.success\r",
-                  "    pm.collectionVariables.set('event2', pm.response.json().id)\r",
-                  "})"
+                  "pm.test(\"Status code is 201\", function() {\r",
+                  "    pm.expect(pm.response.code).to.equal(201);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response have body\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.response.to.be.json;\r",
+                  "});\r",
+                  "const response = pm.response.json();\r",
+                  "pm.collectionVariables.set('eventId', response.id);"
                 ],
                 "type": "text/javascript",
                 "packages": {}
@@ -274,7 +280,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "    {\r\n    \"title\": \"Заплыв на резиновых уточках\",\r\n    \"annotation\": \"Одевайтесь тепло, берите зонтики, чай, кофе, хорошее настроение и резиновых уточек\",\r\n    \"description\": \"Любительский заплыв на резиновых уточках в акватории Москвы-реки\",\r\n    \"category\": {{category1}},\r\n    \"eventDate\": \"2026-09-25 22:36:48\"\r\n    }",
+              "raw": "{\r\n  \"annotation\": \"Концерт на свежем воздухе\",\r\n  \"category\": {{categoryId}},\r\n  \"description\": \"Концерт на свежем воздухе\",\r\n  \"eventDate\": \"2024-10-10 22:01:00\",\r\n  \"location\": {\r\n    \"lat\": 33.333,\r\n    \"lon\": 11.111\r\n  },\r\n  \"paid\": true,\r\n  \"participantLimit\": 10,\r\n  \"requestModeration\": false,\r\n  \"title\": \"Концерт\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -282,22 +288,15 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/users/:userId/events",
-              "protocol": "http",
+              "raw": "localhost:8080/users/{{userId1}}/events",
               "host": [
                 "localhost"
               ],
               "port": "8080",
               "path": [
                 "users",
-                ":userId",
+                "{{userId1}}",
                 "events"
-              ],
-              "variable": [
-                {
-                  "key": "userId",
-                  "value": "{{userId1}}"
-                }
               ]
             }
           },
