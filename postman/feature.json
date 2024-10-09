@@ -281,8 +281,27 @@
                 }
               }
             },
-            "url": "{{HOST}}/users/{{user1}}/events"
-          },
+            "url": {
+              "raw": "http://localhost:8080/users/:userId/events",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users",
+                ":userId",
+                "events"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "{{userId1}}"
+                }
+              ]
+            }
+          }
+        },
           "response": []
         },
         {
