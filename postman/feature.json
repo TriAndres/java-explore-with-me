@@ -259,8 +259,8 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test(\"Status code is 201\", function() {\r",
-                  "    pm.expect(pm.response.code).to.equal(201);\r",
+                  "pm.test(\"Status code is 200\", function() {\r",
+                  "    pm.expect(pm.response.code).to.equal(200);\r",
                   "});\r",
                   "\r",
                   "pm.test(\"Response have body\", function () {\r",
