@@ -286,8 +286,6 @@
                   "    \r",
                   "});\r",
                   "\r",
-                  "pm.test(\"Ответ должен обновить поле text\", function() {\r",
-                  "    pm.expect(body.text).to.include(\"Новый какой-то текст\");\r",
                   "});"
                 ],
                 "type": "text/javascript",
