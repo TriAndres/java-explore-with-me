@@ -253,40 +253,16 @@
           "response": []
         },
         {
-          "name": "Create event",
+          "name": "Подготовка: User 1 добавляет событие 2",
           "event": [
             {
               "listen": "test",
               "script": {
                 "exec": [
-                  "const body = pm.response.json();\r",
-                  "\r",
-                  "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
-                  "    pm.response.to.have.status(200); \r",
-                  "    pm.response.to.be.json; \r",
-                  "}); \r",
-                  "\r",
-                  "pm.test(\"Ответ должен содержать объект EventDto\", function() {\r",
-                  "    pm.expect(body).to.have.property('id').that.is.a('number').and.is.not.equal(0);\r",
-                  "    pm.expect(body).to.have.property('title');\r",
-                  "    pm.expect(body).to.have.property('annotation');\r",
-                  "    pm.expect(body).to.have.property('category');\r",
-                  "    pm.expect(body).to.have.property('paid');\r",
-                  "    pm.expect(body).to.have.property('eventDate');\r",
-                  "    pm.expect(body).to.have.property('initiator');\r",
-                  "    pm.expect(body).to.have.property('description');\r",
-                  "    pm.expect(body).to.have.property('participantLimit');\r",
-                  "    pm.expect(body).to.have.property('state');\r",
-                  "    pm.expect(body).to.have.property('createdOn');\r",
-                  "    pm.expect(body).to.have.property('location');\r",
-                  "    pm.expect(body).to.have.property('requestModeration');\r",
-                  "    pm.expect(body).to.have.property('confirmedRequests');\r",
-                  "    pm.expect(body).to.have.property('publishedOn');\r",
-                  "    pm.expect(body).to.have.property('views');\r",
-                  "    \r",
-                  "});\r",
-                  "\r",
-                  "});"
+                  "pm.test(\"An access token is returned\", () => {\r",
+                  "    pm.response.to.be.success\r",
+                  "    pm.collectionVariables.set('event2', pm.response.json().id)\r",
+                  "})"
                 ],
                 "type": "text/javascript",
                 "packages": {}
@@ -294,36 +270,18 @@
             }
           ],
           "request": {
-            "method": "PATCH",
+            "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"text\": \"Новый какой-то текст\"\r\n}",
+              "raw": "    {\r\n    \"title\": \"Заплыв на резиновых уточках\",\r\n    \"annotation\": \"Одевайтесь тепло, берите зонтики, чай, кофе, хорошее настроение и резиновых уточек\",\r\n    \"description\": \"Любительский заплыв на резиновых уточках в акватории Москвы-реки\",\r\n    \"category\": {{category1}},\r\n    \"eventDate\": \"2026-09-25 22:36:48\"\r\n    }",
               "options": {
                 "raw": {
                   "language": "json"
                 }
               }
             },
-            "url": {
-              "raw": "http://localhost:8080/users/{{userId}}/events",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "8080",
-              "path": [
-                "users",
-                "{{userId}}",
-                "events"
-              ],
-              "variable": [
-                {
-                  "key": "userId",
-                  "value": "{{userId}}"
-                }
-              ]
-            }
+            "url": "{{HOST}}/users/{{user1}}/events"
           },
           "response": []
         },
