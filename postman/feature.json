@@ -306,7 +306,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:8080/users/:userId/events",
+              "raw": "http://localhost:8080/users/{{:userId}}/events",
               "protocol": "http",
               "host": [
                 "localhost"
