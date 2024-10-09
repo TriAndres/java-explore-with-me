@@ -2,7 +2,6 @@ package ru.practicum.requests.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.events.model.Event;
 import ru.practicum.events.model.State;
 import ru.practicum.events.repository.EventRepository;
@@ -26,7 +25,7 @@ import java.util.stream.Collectors;
 import static ru.practicum.requests.model.Status.CANCELED;
 import static ru.practicum.requests.model.Status.CONFIRMED;
 
-@Transactional
+
 @Service
 @RequiredArgsConstructor
 public class RequestServiceImpl implements RequestService {

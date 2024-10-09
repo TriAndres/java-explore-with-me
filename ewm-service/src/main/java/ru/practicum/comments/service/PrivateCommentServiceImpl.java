@@ -2,7 +2,6 @@ package ru.practicum.comments.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.comments.dto.NewCommentDto;
 import ru.practicum.comments.dto.UpdateCommentDto;
 import ru.practicum.comments.dto.UserCommentDto;
@@ -20,7 +19,6 @@ import java.time.LocalDateTime;
 
 import static ru.practicum.events.model.State.PUBLISHED;
 
-@Transactional
 @Service
 @RequiredArgsConstructor
 public class PrivateCommentServiceImpl implements PrivateCommentService {

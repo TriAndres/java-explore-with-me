@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.client.StatsClient;
 import ru.practicum.events.dto.EventDto;
 import ru.practicum.events.dto.EventShortDto;
@@ -22,7 +21,6 @@ import java.util.stream.Collectors;
 
 import static ru.practicum.events.model.State.PUBLISHED;
 
-@Transactional
 @Service
 public class PublicEventServiceImpl extends EventBase implements PublicEventService {
     private final EventRepository eventRepository;

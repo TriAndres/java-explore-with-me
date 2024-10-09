@@ -3,7 +3,6 @@ package ru.practicum.events.service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
 import ru.practicum.client.StatsClient;
@@ -29,7 +28,6 @@ import java.util.stream.Collectors;
 
 import static ru.practicum.events.model.State.*;
 
-@Transactional
 @Service
 public class AdminEventServiceImpl extends EventBase implements AdminEventService {
     private final EventRepository eventRepository;

@@ -3,7 +3,6 @@ package ru.practicum.comments.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.comments.dto.AdminCommentDto;
 import ru.practicum.comments.dto.UpdateCommentStatusDto;
 import ru.practicum.comments.mapper.CommentMapper;
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 import static ru.practicum.comments.model.CommentStatus.CANCELED;
 import static ru.practicum.comments.model.CommentStatus.PUBLISHED;
 
-@Transactional
 @Service
 @RequiredArgsConstructor
 public class AdminCommentServiceImpl implements AdminCommentService {
