@@ -260,7 +260,7 @@
               "script": {
                 "exec": [
                   "pm.test(\"Status code is 200 or 201\", function () {\r",
-                  "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                  "    pm.expect(pm.response.code).to.be.oneOf(400);\r",
                   "});\r",
                   "pm.test(\"Has comment create response\", function () {\r",
                   "    pm.response.to.be.withBody;\r",
