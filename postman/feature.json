@@ -272,7 +272,7 @@
                   "    pm.expect(body).to.have.property('annotation');\r",
                   "    pm.expect(body).to.have.property('category');\r",
                   "    pm.expect(body).to.have.property('paid');\r",
-                  "    pm.expect(body).to.have.property('createdDate');\r",
+                  "    pm.expect(body).to.have.property('eventDate');\r",
                   "    pm.expect(body).to.have.property('initiator');\r",
                   "    pm.expect(body).to.have.property('description');\r",
                   "    pm.expect(body).to.have.property('participantLimit');\r",
