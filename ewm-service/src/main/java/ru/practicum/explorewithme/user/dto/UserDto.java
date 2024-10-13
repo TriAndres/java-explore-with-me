@@ -1,11 +1,12 @@
 package ru.practicum.explorewithme.user.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.*;
 
 @Getter
 @NoArgsConstructor
@@ -16,11 +17,11 @@ public class UserDto {
     private Long id;
 
     @NotBlank
-    @Length(min = 2, max = 250)
+    @Size(min = 2, max = 250)
     private String name;
 
     @NotBlank
     @Email
-    @Length(min = 6, max = 254)
+    @Size(min = 6, max = 254)
     private String email;
 }

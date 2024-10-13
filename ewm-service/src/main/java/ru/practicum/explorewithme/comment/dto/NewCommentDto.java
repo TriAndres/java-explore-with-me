@@ -1,11 +1,11 @@
 package ru.practicum.explorewithme.comment.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
@@ -14,6 +14,6 @@ import org.hibernate.validator.constraints.Length;
 public class NewCommentDto {
 
     @NotBlank
-    @Length(min = 1, max = 2000)
+    @Size(min = 1, max = 2000)
     private String content;
 }

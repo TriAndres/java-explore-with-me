@@ -39,9 +39,9 @@ public class EventMapper {
     }
 
     public static Event toEvent(NewEventDto newEventDto, User user, Category category, Location location) {
-        Boolean paid;
-        Boolean requestModeration;
-        Integer participantLimit;
+        boolean paid;
+        boolean requestModeration;
+        int participantLimit;
         if (newEventDto.getPaid() == null) {
             paid = false;
         } else {

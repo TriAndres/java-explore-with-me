@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
 @Getter
 @EqualsAndHashCode(of = "id")
@@ -17,6 +16,6 @@ public class CategoryDto {
 
     @NotBlank
     @NotNull
-    @Length(max = 50)
+    @Size(max = 50)
     private String name;
 }

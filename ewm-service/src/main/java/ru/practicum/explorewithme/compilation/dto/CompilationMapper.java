@@ -12,7 +12,7 @@ import java.util.Set;
 public class CompilationMapper {
 
     public static Compilation toCompilation(NewCompilationDto newCompilationDto, Set<Event> events) {
-        Boolean pinned;
+        boolean pinned;
         if (newCompilationDto.getPinned() == null) {
             pinned = false;
         } else {
