@@ -1,7 +1,7 @@
 package ru.practicum.explorewithme;
 
+import jakarta.annotation.Nullable;
 import org.springframework.http.*;
-import org.springframework.lang.Nullable;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
