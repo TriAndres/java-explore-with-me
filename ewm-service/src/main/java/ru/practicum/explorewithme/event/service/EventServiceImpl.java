@@ -176,7 +176,7 @@ public class EventServiceImpl implements EventService {
         List<Category> categories;
         if (categoriesId != null) {
             categories = categoryRepository.findAllById(categoriesId);
-            if (categories.size() == 0) {
+            if (categories.isEmpty()) {
                 categories = null;
             }
         } else {
@@ -265,7 +265,7 @@ public class EventServiceImpl implements EventService {
         List<Category> categories;
         if (categoriesIds != null) {
             categories = categoryRepository.findAllById(categoriesIds);
-            if (categories.size() == 0) {
+            if (categories.isEmpty()) {
                 categories = null;
             }
         } else {
