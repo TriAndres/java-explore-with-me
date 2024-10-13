@@ -9,9 +9,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>stats-server</artifactId>
+    <name>Stats server</name>
+    <artifactId>stat-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
