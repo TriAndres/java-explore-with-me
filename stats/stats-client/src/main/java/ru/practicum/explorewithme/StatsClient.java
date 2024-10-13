@@ -1,6 +1,6 @@
 package ru.practicum.explorewithme;
 
-import io.micrometer.core.lang.Nullable;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -52,6 +52,7 @@ public class StatsClient extends BaseClient {
                 "uri", uri);
 
         Object response = get("/unique?uri={uri}&ip={ip}", parameters).getBody();
+        assert response != null;
         String re = response.toString();
 
         return response.equals(true);
